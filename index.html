@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class='inputSize'>
+        
+        <label for="size">Enter Size of Etch-a-Sketch(Maximum is 100)</label>
+        <input type="integer" id="size">
+        <button id="input">Enter</button>
+    </div>
+    
+
+    <div class="container"></div>
+    <script src="script.js"></script>
+    <script>
+        let size = document.querySelector('input');
+        const button = document.querySelector('#input');
+        const container = document.querySelector('.container');
+    
+        button.addEventListener('click', () => {
+            let int; // Define int here
+            if(size.value < 100 && size.value > 0){
+                int = size.value;
+                size.value = '';
+            } else if(size.value > 100){
+                alert('Please enter a number less than 100');
+                size.value = '';
+                return; // Return early to prevent the rest of the function from running
+            } else if(size.value < 0){
+                alert('Please enter a number greater than 0');
+                size.value = '';
+                return; // Return early to prevent the rest of the function from running
+            }
+    
+            // Set the CSS variable for grid size
+            // document.documentElement.style.setProperty('--grid-size', int);
+    
+            // Clear the container
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+    
+            for(let i = 0; i < int; i++){
+                const row = document.createElement('div');
+                row.classList.add('row');
+                container.appendChild(row);
+                for(let j = 0; j < int; j++){
+                    const cell = document.createElement('div');
+                    cell.classList.add('cell');
+                    row.appendChild(cell);
+                }
+            }
+    
+            document.querySelectorAll('.cell').forEach(cell => {
+                cell.addEventListener('mouseover', () => {
+                    cell.style.backgroundColor = 'black';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

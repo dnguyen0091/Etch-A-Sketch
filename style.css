@@ -1,0 +1,36 @@
+
+
+.cell {
+    border: 1px solid black;
+    width: 10px; /* 100% / 16 */
+    height: 10px; /* 100% / 16 */
+    float: left;
+
+    
+}
+.container{
+    box-sizing: border-box; /* Add this line */
+    position: relative;
+    padding: 10px;
+    background-color: lightgrey;
+    border: 10px solid black;
+    border-radius: 10px;
+    /* border-bottom: 100px solid red; Adjust this value as needed */
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.inputSize {
+    display: flex;
+    flex-direction: row;
+    
+}
